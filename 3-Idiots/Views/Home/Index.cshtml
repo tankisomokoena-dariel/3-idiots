@@ -1,0 +1,43 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content("~/Content/Customize.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div class="row text-center">
+        <div class="col">
+            <img src="https://www.dariel.co.za/wp-content/uploads/2019/08/Dariel-Logo.png" class="rounded" />
+        </div>
+    </div>
+
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    {
+        <div class="row center-block" style="display:table; margin-left:auto; margin-right:auto;">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input id="password" type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col" style="text-align:center;">
+                <button type="submit">Submit</button>
+            </div>
+        </div>
+    }
+</body>
+</html>
