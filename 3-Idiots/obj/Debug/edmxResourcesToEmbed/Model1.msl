@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="idiotsModelStoreContainer" CdmEntityContainer="Entities1">
+    <EntitySetMapping Name="Flags">
+      <EntityTypeMapping TypeName="idiotsModel.Flag">
+        <MappingFragment StoreEntitySet="Flags">
+          <ScalarProperty Name="flagID" ColumnName="flagID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="flag1" ColumnName="flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QandAs">
+      <EntityTypeMapping TypeName="idiotsModel.QandA">
+        <MappingFragment StoreEntitySet="QandA">
+          <ScalarProperty Name="qaID" ColumnName="qaID" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="answer" ColumnName="answer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userTables">
+      <EntityTypeMapping TypeName="idiotsModel.userTable">
+        <MappingFragment StoreEntitySet="userTable">
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phoneNO" ColumnName="phoneNO" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

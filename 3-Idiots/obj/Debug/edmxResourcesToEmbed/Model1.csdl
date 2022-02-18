@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="idiotsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Flag">
+    <Key>
+      <PropertyRef Name="flagID" />
+    </Key>
+    <Property Name="flagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="Int32" />
+    <Property Name="flag1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="userTable" Relationship="Self.FK__Flags__userID__656C112C" FromRole="Flags" ToRole="userTable" />
+  </EntityType>
+  <EntityType Name="QandA">
+    <Key>
+      <PropertyRef Name="qaID" />
+    </Key>
+    <Property Name="qaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="Int32" />
+    <Property Name="answer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="userTable" Relationship="Self.FK__QamdA__userID__628FA481" FromRole="QandA" ToRole="userTable" />
+  </EntityType>
+  <EntityType Name="userTable">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="phoneNO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Flags" Relationship="Self.FK__Flags__userID__656C112C" FromRole="userTable" ToRole="Flags" />
+    <NavigationProperty Name="QandAs" Relationship="Self.FK__QamdA__userID__628FA481" FromRole="userTable" ToRole="QandA" />
+  </EntityType>
+  <Association Name="FK__Flags__userID__656C112C">
+    <End Role="userTable" Type="Self.userTable" Multiplicity="0..1" />
+    <End Role="Flags" Type="Self.Flag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userTable">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="Flags">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QamdA__userID__628FA481">
+    <End Role="userTable" Type="Self.userTable" Multiplicity="0..1" />
+    <End Role="QandA" Type="Self.QandA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userTable">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="QandA">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Flags" EntityType="Self.Flag" />
+    <EntitySet Name="QandAs" EntityType="Self.QandA" />
+    <EntitySet Name="userTables" EntityType="Self.userTable" />
+    <AssociationSet Name="FK__Flags__userID__656C112C" Association="Self.FK__Flags__userID__656C112C">
+      <End Role="userTable" EntitySet="userTables" />
+      <End Role="Flags" EntitySet="Flags" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QamdA__userID__628FA481" Association="Self.FK__QamdA__userID__628FA481">
+      <End Role="userTable" EntitySet="userTables" />
+      <End Role="QandA" EntitySet="QandAs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
