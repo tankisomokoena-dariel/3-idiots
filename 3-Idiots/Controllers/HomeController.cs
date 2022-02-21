@@ -8,8 +8,8 @@ namespace _3_Idiots.Controllers
 {
 	public class HomeController : Controller
 	{
-		userTablesController dbAccess = new userTablesController();
-		public ActionResult Index()
+        userTablesController dbAccess = new userTablesController();
+        public ActionResult Index()
 		{
 			return View();
 		}
@@ -21,14 +21,14 @@ namespace _3_Idiots.Controllers
 
 		public ActionResult Login(string email, string password)
         {
-			if(dbAccess.VerifyDetails(email,password) == -1)
+            if (dbAccess.VerifyDetails(email, password) == -1)
             {
-				return View("~/Views/Home/Index.cshtml");
+                return View("~/Views/Home/Index.cshtml");
             }
             else
             {
-				return View("~/Views/Home/Home.cshtml");
-			}
+                return View("~/Views/Home/Home.cshtml");
+            }
         }
 
 		public ActionResult About()

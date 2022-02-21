@@ -6,26 +6,25 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using _3_Idiots;
+using _3_Idiots.Models;
 
 namespace _3_Idiots.Controllers
 {
     public class userTablesController : Controller
     {
-        private Entities1 db = new Entities1();
+        private Entities2 db = new Entities2();
 
         public int VerifyDetails(string email, string password)
         {
-            var result = db.userTables.Where(x => x.email == email && x.password == password).FirstOrDefault();
-            if(result == null)
+            var user = db.userTables.FirstOrDefault(u => u.email == email && u.password == password);
+            if (user != null)
             {
-                return -1;
+                return user.userID;
             }
             else
             {
-                return result.userID;
+                return -1;
             }
-           
         }
 
         // GET: userTables
