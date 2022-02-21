@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="idiotsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="__EFMigrationsHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+    </Key>
+    <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flags">
+    <Key>
+      <PropertyRef Name="flagID" />
+    </Key>
+    <Property Name="flagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="int" />
+    <Property Name="flag" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="QandA">
+    <Key>
+      <PropertyRef Name="qaID" />
+    </Key>
+    <Property Name="qaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="int" />
+    <Property Name="answer" Type="varchar" MaxLength="255" />
+    <Property Name="question" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="userTable">
+    <Key>
+      <PropertyRef Name="userID" />
+    </Key>
+    <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="lastName" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="phoneNO" Type="varchar" MaxLength="15" />
+    <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Flags__userID__656C112C">
+    <End Role="userTable" Type="Self.userTable" Multiplicity="0..1" />
+    <End Role="Flags" Type="Self.Flags" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userTable">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="Flags">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__QamdA__userID__628FA481">
+    <End Role="userTable" Type="Self.userTable" Multiplicity="0..1" />
+    <End Role="QandA" Type="Self.QandA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="userTable">
+        <PropertyRef Name="userID" />
+      </Principal>
+      <Dependent Role="QandA">
+        <PropertyRef Name="userID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="idiotsModelStoreContainer">
+    <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flags" EntityType="Self.Flags" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QandA" EntityType="Self.QandA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="userTable" EntityType="Self.userTable" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Flags__userID__656C112C" Association="Self.FK__Flags__userID__656C112C">
+      <End Role="userTable" EntitySet="userTable" />
+      <End Role="Flags" EntitySet="Flags" />
+    </AssociationSet>
+    <AssociationSet Name="FK__QamdA__userID__628FA481" Association="Self.FK__QamdA__userID__628FA481">
+      <End Role="userTable" EntitySet="userTable" />
+      <End Role="QandA" EntitySet="QandA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<_3_Idiots.Models.QandA>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.answer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.question)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userTable.firstName)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.answer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.question)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userTable.firstName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.qaID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.qaID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.qaID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

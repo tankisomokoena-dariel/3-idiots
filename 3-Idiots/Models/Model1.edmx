@@ -1,0 +1,231 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="idiotsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="ProductVersion" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Flags">
+          <Key>
+            <PropertyRef Name="flagID" />
+          </Key>
+          <Property Name="flagID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userID" Type="int" />
+          <Property Name="flag" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="QandA">
+          <Key>
+            <PropertyRef Name="qaID" />
+          </Key>
+          <Property Name="qaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userID" Type="int" />
+          <Property Name="answer" Type="varchar" MaxLength="255" />
+          <Property Name="question" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="userTable">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="phoneNO" Type="varchar" MaxLength="15" />
+          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Flags__userID__656C112C">
+          <End Role="userTable" Type="Self.userTable" Multiplicity="0..1" />
+          <End Role="Flags" Type="Self.Flags" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userTable">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Flags">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QamdA__userID__628FA481">
+          <End Role="userTable" Type="Self.userTable" Multiplicity="0..1" />
+          <End Role="QandA" Type="Self.QandA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userTable">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="QandA">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="idiotsModelStoreContainer">
+          <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flags" EntityType="Self.Flags" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QandA" EntityType="Self.QandA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userTable" EntityType="Self.userTable" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Flags__userID__656C112C" Association="Self.FK__Flags__userID__656C112C">
+            <End Role="userTable" EntitySet="userTable" />
+            <End Role="Flags" EntitySet="Flags" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QamdA__userID__628FA481" Association="Self.FK__QamdA__userID__628FA481">
+            <End Role="userTable" EntitySet="userTable" />
+            <End Role="QandA" EntitySet="QandA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="idiotsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__EFMigrationsHistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Flag">
+          <Key>
+            <PropertyRef Name="flagID" />
+          </Key>
+          <Property Name="flagID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" />
+          <Property Name="flag1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="userTable" Relationship="Self.FK__Flags__userID__656C112C" FromRole="Flags" ToRole="userTable" />
+        </EntityType>
+        <EntityType Name="QandA">
+          <Key>
+            <PropertyRef Name="qaID" />
+          </Key>
+          <Property Name="qaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="Int32" />
+          <Property Name="answer" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="question" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="userTable" Relationship="Self.FK__QamdA__userID__628FA481" FromRole="QandA" ToRole="userTable" />
+        </EntityType>
+        <EntityType Name="userTable">
+          <Key>
+            <PropertyRef Name="userID" />
+          </Key>
+          <Property Name="userID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phoneNO" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Flags" Relationship="Self.FK__Flags__userID__656C112C" FromRole="userTable" ToRole="Flags" />
+          <NavigationProperty Name="QandAs" Relationship="Self.FK__QamdA__userID__628FA481" FromRole="userTable" ToRole="QandA" />
+        </EntityType>
+        <Association Name="FK__Flags__userID__656C112C">
+          <End Role="userTable" Type="Self.userTable" Multiplicity="0..1" />
+          <End Role="Flags" Type="Self.Flag" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userTable">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="Flags">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__QamdA__userID__628FA481">
+          <End Role="userTable" Type="Self.userTable" Multiplicity="0..1" />
+          <End Role="QandA" Type="Self.QandA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userTable">
+              <PropertyRef Name="userID" />
+            </Principal>
+            <Dependent Role="QandA">
+              <PropertyRef Name="userID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
+          <EntitySet Name="Flags" EntityType="Self.Flag" />
+          <EntitySet Name="QandAs" EntityType="Self.QandA" />
+          <EntitySet Name="userTables" EntityType="Self.userTable" />
+          <AssociationSet Name="FK__Flags__userID__656C112C" Association="Self.FK__Flags__userID__656C112C">
+            <End Role="userTable" EntitySet="userTables" />
+            <End Role="Flags" EntitySet="Flags" />
+          </AssociationSet>
+          <AssociationSet Name="FK__QamdA__userID__628FA481" Association="Self.FK__QamdA__userID__628FA481">
+            <End Role="userTable" EntitySet="userTables" />
+            <End Role="QandA" EntitySet="QandAs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="idiotsModelStoreContainer" CdmEntityContainer="Entities2">
+          <EntitySetMapping Name="C__EFMigrationsHistory">
+            <EntityTypeMapping TypeName="idiotsModel.C__EFMigrationsHistory">
+              <MappingFragment StoreEntitySet="__EFMigrationsHistory">
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flags">
+            <EntityTypeMapping TypeName="idiotsModel.Flag">
+              <MappingFragment StoreEntitySet="Flags">
+                <ScalarProperty Name="flagID" ColumnName="flagID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="flag1" ColumnName="flag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QandAs">
+            <EntityTypeMapping TypeName="idiotsModel.QandA">
+              <MappingFragment StoreEntitySet="QandA">
+                <ScalarProperty Name="qaID" ColumnName="qaID" />
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="answer" ColumnName="answer" />
+                <ScalarProperty Name="question" ColumnName="question" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userTables">
+            <EntityTypeMapping TypeName="idiotsModel.userTable">
+              <MappingFragment StoreEntitySet="userTable">
+                <ScalarProperty Name="userID" ColumnName="userID" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="phoneNO" ColumnName="phoneNO" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
