@@ -1,6 +1,24 @@
-﻿.login-input {
-    text-align: center;
-    align: center;
-    display: inline-block;
-    float: none;
+﻿
+body {
+    height: 100%;
+    background: linear-gradient(90deg, #0096FF 50%, #FFFFFF 50%);
+}
+
+.login-form {
+    float: right;
+    position: absolute;
+    right: 18%;
+    bottom: 50%;
+}
+
+.login-form .col{
+ 
+    bottom: 100%;
+    
+}
+
+#login-form #input-group{
+    float: right;
+    right: -100%;
+    bottom: 70%;
 }

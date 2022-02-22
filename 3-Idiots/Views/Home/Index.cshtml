@@ -15,29 +15,32 @@
     <link href="@Url.Content("~/Content/Customize.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="row text-center">
-        <div class="col">
-            <img src="https://www.dariel.co.za/wp-content/uploads/2019/08/Dariel-Logo.png" class="rounded" />
-        </div>
-    </div>
+	
 
-    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
-    {
-        <div class="row center-block" style="display:table; margin-left:auto; margin-right:auto;">
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                <input id="email" type="text" class="form-control" name="email" placeholder="Email">
-            </div>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                <input id="password" type="password" class="form-control" name="password" placeholder="Password">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col" style="text-align:center;">
-                <button type="submit">Submit</button>
-            </div>
-        </div>
-    }
+	@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+	{
+<div class="login-form" style="display:table; margin-left:auto; margin-right:auto;">
+	<div class="col">
+		<img src="https://www.dariel.co.za/wp-content/uploads/2019/08/Dariel-Logo.png" class="rounded" />
+	</div>
+
+	<div class="input-group">
+		<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+		<input id="email" type="text" class="form-control" name="email" placeholder="Email">
+	</div>
+
+	<div class="input-group">
+		<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+		<input id="password" type="password" class="form-control" name="password" placeholder="Password">
+	</div>
+</div>
+		<div class="row">
+			<div class="login-btn" style="text-align:center;">
+				<button type="submit">Login</button>
+			</div>
+		</div>
+
+	}
+	UNDER CONSTRUCTION
 </body>
 </html>
