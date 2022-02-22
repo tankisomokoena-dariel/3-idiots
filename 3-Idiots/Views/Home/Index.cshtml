@@ -15,10 +15,15 @@
     <link href="@Url.Content("~/Content/Customize.css")" rel="stylesheet" type="text/css" />
 </head>
 <body>
+
     <div class="row text-center">
         <div class="col">
             <img src="https://www.dariel.co.za/wp-content/uploads/2019/08/Dariel-Logo.png" class="rounded" />
         </div>
+    </div>
+
+    <div class="row text-center">
+        <p>@ViewBag.ResponseMessage</p>
     </div>
 
     @using (Html.BeginForm("Login", "Home", FormMethod.Post))

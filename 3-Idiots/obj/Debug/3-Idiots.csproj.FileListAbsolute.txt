@@ -51,6 +51,8 @@ C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\roslyn\vbc.rsp
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\roslyn\VBCSCompiler.exe
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\Antlr3.Runtime.dll
+C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\EntityFramework.dll
+C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\EntityFramework.SqlServer.dll
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\Newtonsoft.Json.dll
@@ -62,6 +64,8 @@ C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\System.Web.WebPages.Deplo
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\System.Web.WebPages.dll
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\System.Web.WebPages.Razor.dll
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\WebGrease.dll
+C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\EntityFramework.xml
+C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\EntityFramework.SqlServer.xml
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\System.Web.Helpers.xml
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\System.Web.Mvc.xml
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\System.Web.Optimization.xml
@@ -76,8 +80,3 @@ C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\obj\Debug\3-Idiots.csproj.Cor
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\obj\Debug\3-Idiots.csproj.CopyComplete
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\obj\Debug\3-Idiots.dll
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\obj\Debug\3-Idiots.pdb
-C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\EntityFramework.dll
-C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\EntityFramework.SqlServer.dll
-C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\EntityFramework.xml
-C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\bin\EntityFramework.SqlServer.xml
-C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\obj\Debug\3-Idiots.csproj.AssemblyReference.cache

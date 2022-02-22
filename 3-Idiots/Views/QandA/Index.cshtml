@@ -1,0 +1,54 @@
+﻿@model IEnumerable<IdiotsAPI.QandA>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <table class="table table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.QaID)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Question)
+                </th>
+                <th scope="col">
+                    @Html.DisplayNameFor(model => model.Answer)
+                </th>
+                <th scope="col">
+                    Action
+                </th>
+            </tr>
+        </thead>
+    
+    @foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.QaID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Question)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Answer)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id= (int)item.QaID }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+    }
+    
+    </table>
+</body>
+</html>
