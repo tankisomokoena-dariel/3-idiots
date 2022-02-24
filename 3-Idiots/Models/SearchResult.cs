@@ -5,11 +5,9 @@ using System.Web;
 
 namespace _3_Idiots.Models
 {
-    public class QandA
+    public class SearchResult
     {
-        public int questionID  { get; set; }
-        public int userID { get; set; }
-        public string Question { get; set; }
         public string Answer { get; set; }
+        public string Expert { get; set; }
     }
 }

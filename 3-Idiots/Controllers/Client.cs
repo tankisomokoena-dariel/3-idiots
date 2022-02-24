@@ -784,21 +784,17 @@ namespace IdiotsAPI
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task<string> SearchAsync(string search, string search_string)
+        public virtual System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> SearchAsync(string search)
         {
-            return SearchAsync(search, search_string, System.Threading.CancellationToken.None);
+            return SearchAsync(search, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task<string> SearchAsync(string search, string search_string, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task<System.Collections.Generic.ICollection<string>> SearchAsync(string search, System.Threading.CancellationToken cancellationToken)
         {
-            if (search_string == null)
-                throw new System.ArgumentNullException("search_string");
-
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/QandA/Search/{search string}?");
-            urlBuilder_.Replace("{search string}", System.Uri.EscapeDataString(ConvertToString(search_string, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/QandA/Search?");
             if (search != null)
             {
                 urlBuilder_.Append(System.Uri.EscapeDataString("search") + "=").Append(System.Uri.EscapeDataString(ConvertToString(search, System.Globalization.CultureInfo.InvariantCulture))).Append("&");
@@ -837,7 +833,7 @@ namespace IdiotsAPI
                         var status_ = (int)response_.StatusCode;
                         if (status_ == 200)
                         {
-                            var objectResponse_ = await ReadObjectResponseAsync<string>(response_, headers_, cancellationToken).ConfigureAwait(false);
+                            var objectResponse_ = await ReadObjectResponseAsync<System.Collections.Generic.ICollection<string>>(response_, headers_, cancellationToken).ConfigureAwait(false);
                             if (objectResponse_.Object == null)
                             {
                                 throw new ApiException("Response was null which was not expected.", status_, objectResponse_.Text, headers_, null);

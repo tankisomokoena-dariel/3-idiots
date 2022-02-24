@@ -1,7 +1,9 @@
-﻿using IdiotsAPI;
+﻿using _3_Idiots.Models;
+using IdiotsAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -13,9 +15,16 @@ namespace _3_Idiots.Controllers
         // GET: QandA
         public ActionResult Index()
         {
-            int userID = 1;
-            var myQuestions = QandAClient.ViewMyQuestionsAsync(userID).Result;
-            return View(myQuestions.ToList());
+            if (Session["userID"] != null)
+            {
+                int userID = Convert.ToInt32(Session["userID"]);
+                var myQuestions = QandAClient.ViewMyQuestionsAsync(userID).Result;
+                return View(myQuestions.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // GET: QandA/Details/5
@@ -92,6 +101,16 @@ namespace _3_Idiots.Controllers
             {
                 return View();
             }
+        }
+
+        // Get: QandA/Search/searchString
+        [HttpPost]
+        public ActionResult Search(string search)
+        {
+            var response = QandAClient.SearchAsync(search).Result.ToList();
+            ViewBag.Answer = response[0];
+            ViewBag.Experts = response[1];
+            return View("~/Views/Home/Home.cshtml");
         }
     }
 }

@@ -30,6 +30,7 @@ namespace _3_Idiots.Controllers
             var response = client.LoginAsync(user).Result;
             if (response != 0)
             {
+                Session["userID"] = response;
                 return View("~/Views/Home/Home.cshtml");
             }
             else

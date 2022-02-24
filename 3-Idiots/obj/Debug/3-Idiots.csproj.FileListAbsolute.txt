@@ -80,3 +80,4 @@ C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\obj\Debug\3-Idiots.csproj.Cor
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\obj\Debug\3-Idiots.csproj.CopyComplete
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\obj\Debug\3-Idiots.dll
 C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\obj\Debug\3-Idiots.pdb
+C:\Users\tankiso.mokoena\Desktop\3-idiots\3-Idiots\obj\Debug\3-Idiots.csproj.AssemblyReference.cache
