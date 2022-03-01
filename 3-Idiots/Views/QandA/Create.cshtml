@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<IdiotsAPI.QandA>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -44,9 +44,9 @@
                 @Html.DisplayFor(modelItem => item.Question)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new { id=item.QaID}) |
+                @Html.ActionLink("Details", "Details", new { id = item.QaID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.QaID })
             </td>
         </tr>
     }
