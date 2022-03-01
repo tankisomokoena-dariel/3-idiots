@@ -19,6 +19,7 @@ namespace _3_Idiots.Controllers
 
         public ActionResult Home()
         {
+            
             return View();
         }
 

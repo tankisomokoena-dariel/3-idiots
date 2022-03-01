@@ -15,16 +15,10 @@ namespace _3_Idiots.Controllers
         // GET: QandA
         public ActionResult Index()
         {
-            if (Session["userID"] != null)
-            {
-                int userID = Convert.ToInt32(Session["userID"]);
-                var myQuestions = QandAClient.ViewMyQuestionsAsync(userID).Result;
-                return View(myQuestions.ToList());
-            }
-            else
-            {
-                return RedirectToAction("Index", "Home");
-            }
+            CheckSession();
+            int userID = Convert.ToInt32(Session["userID"]);
+            var myQuestions = QandAClient.ViewMyQuestionsAsync(userID).Result;
+            return View(myQuestions.ToList());
         }
 
         // GET: QandA/Details/5
@@ -58,6 +52,7 @@ namespace _3_Idiots.Controllers
         // GET: QandA/Edit/5
         public ActionResult Edit(int id)
         {
+            CheckSession();
             var entry = QandAClient.GetAsync(id).Result;
             return View(entry);
         }
@@ -66,6 +61,7 @@ namespace _3_Idiots.Controllers
         [HttpPost]
         public ActionResult Edit([Bind(Include = "qaID, userID, answer, question")] QandA update)
         {
+            CheckSession();
             try
             {
                 // TODO: Add update logic here
@@ -107,10 +103,19 @@ namespace _3_Idiots.Controllers
         [HttpPost]
         public ActionResult Search(string search)
         {
-            var response = QandAClient.SearchAsync(search).Result.ToList();
-            ViewBag.Answer = response[0];
-            ViewBag.Experts = response[1];
-            return View("~/Views/Home/Home.cshtml");
+            CheckSession();
+            int userID = Convert.ToInt32(Session["userID"]);
+            var response = QandAClient.SearchAsync(search, userID).Result;
+            return View(response);
+
+        }
+
+        protected void CheckSession()
+        {
+            if (Session["userID"] == null)
+            {
+                RedirectToAction("Index", "Home");
+            }
         }
     }
 }
