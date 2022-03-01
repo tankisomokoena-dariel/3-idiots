@@ -30,7 +30,8 @@ namespace _3_Idiots.Controllers
         // GET: QandA/Create
         public ActionResult Create()
         {
-            return View();
+            var result = QandAClient.UnuansweredQuestionsAsync().Result;
+            return View(result.ToList());
         }
 
         // POST: QandA/Create
