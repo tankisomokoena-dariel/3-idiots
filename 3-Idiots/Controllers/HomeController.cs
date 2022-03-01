@@ -28,7 +28,12 @@ namespace _3_Idiots.Controllers
             user.Email = email;
             user.Password = password;
             var response = client.LoginAsync(user).Result;
-            if (response != 0)
+            if (response == -1)
+            {
+                ViewBag.ResponseMessage = "Server error!";
+                return View("~/Views/Home/Index.cshtml");
+            }
+            else if (response != 0)
             {
                 Session["userID"] = response;
                 return View("~/Views/Home/Home.cshtml");
