@@ -120,16 +120,26 @@ class Questions(Resource):
         start = self.get_time()
              
         for i in qna:
-            ideal_q = qna[i][-2]
+            
+# =============================================================================
+#             data fetched from the data based is explicitly converted 
+#             into a string using str() to ensure no special or illegal 
+#             characters cause internal server errors
+# =============================================================================
+            
+            ideal_q = str(qna[i][-2])
+            
+            
             ans = qna[i][-1]
             
-            sen_ratio = self.match_sen(search_q,ideal_q)*100
+            sen_ratio = self.match_sen(search_q,ideal_q)
             
             
             if (sen_ratio> 0.3):
-              similar_q[sen_ratio] = list()
-              # similar_q[sen_ratio].append(ideal_q)
-              similar_q[sen_ratio].append(ans)
+                sen_ratio = sen_ratio*100
+                similar_q[sen_ratio] = list()
+                # similar_q[sen_ratio].append(ideal_q)
+                similar_q[sen_ratio].append(ans)
               
               
             
@@ -139,19 +149,22 @@ class Questions(Resource):
             xpt_obj = map_users[j]
             xpt = xpt_obj[-3]+' '+xpt_obj[-2]
             skill_list = xpt_obj[-1]
-            xpt_ratio = self.match_sen(search_q,skill_list)*100
+            xpt_ratio = self.match_sen(search_q,skill_list)
             
             
             if (xpt_ratio> 0.3 and xpt_ratio != shift_ratio):
+                xpt_ratio = xpt_ratio*100
                 expert[xpt_ratio] = list()
                 expert[xpt_ratio].append(xpt)
+                xpt_ratio = xpt_ratio/100
                 #expert[xpt_ratio].append(skill_list)
             
+            
             if (xpt_ratio> 0.3 and xpt_ratio == shift_ratio):
+                xpt_ratio = xpt_ratio*100
                 xpt_ratio = xpt_ratio - 0.2123
                 expert[xpt_ratio] = list()
                 expert[xpt_ratio].append(xpt)
-                #expert[xpt_ratio].append(skill_list)
     
             shift_ratio = xpt_ratio
               
@@ -182,6 +195,7 @@ class Questions(Resource):
         
         sort_xpt = collections.OrderedDict(sorted(expert.items(), reverse=True))
         
+      
         experts = ''
         counter = 0
         for xpt in sort_xpt:
@@ -197,10 +211,19 @@ class Questions(Resource):
      
         
         if len(sort_q) == 0 and len(sort_xpt) == 0:
-        
             return {"output": "no search results."}
         else:
-            return {'answer' : answers,
+            
+            if len(sort_q) == 0:
+                return {'answer' : "no answer found for question",
+                        'expert' : experts}
+            
+            elif len(sort_xpt) == 0:
+                 return    {'answer' : answers,
+                         'expert' : "no experts found"}
+            
+            else:
+                return {'answer' : answers,
                     'expert' : experts}
     pass
 
@@ -208,4 +231,4 @@ class Questions(Resource):
 api.add_resource(Questions, '/question')
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=9000, debug=False)
+    app.run(host="0.0.0.0", port=5000, debug=False)
