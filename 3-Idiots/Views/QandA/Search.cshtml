@@ -1,0 +1,49 @@
+﻿@model IdiotsAPI.SearchResult
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+    <style>
+
+		body {
+			background-image: url('../Content/images/background.jpg');
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+
+    </style>
+</head>
+<body>
+    <div>
+        <h4>SearchResult</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Answer)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Answer)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Expert)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Expert)
+            </dd>
+    
+        </dl>
+    </div>
+</body>
+</html>
