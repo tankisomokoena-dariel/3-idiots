@@ -24,7 +24,8 @@ namespace _3_Idiots.Controllers
         // GET: QandA/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var entry = QandAClient.GetAsync(id).Result;
+            return View(entry);
         }
 
         // GET: QandA/Create
@@ -81,16 +82,18 @@ namespace _3_Idiots.Controllers
         // GET: QandA/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var entry = QandAClient.GetAsync(id).Result;
+            return View(entry);
         }
 
         // POST: QandA/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete([Bind(Include = "qaID, userID, answer, question")] QandA delete)
         {
             try
             {
                 // TODO: Add delete logic here
+                QandAClient.DeleteAsync((int)delete.QaID).Wait();
 
                 return RedirectToAction("Index");
             }

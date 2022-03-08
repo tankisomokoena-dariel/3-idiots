@@ -135,7 +135,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\Client.cs" />
+    <Compile Include="API\Client.cs" />
     <Compile Include="Models\SearchResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -281,6 +281,7 @@
     <Content Include="Views\QandA\Edit.cshtml" />
     <Content Include="Views\QandA\Search.cshtml" />
     <Content Include="Views\QandA\Create.cshtml" />
+    <Content Include="Views\QandA\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
