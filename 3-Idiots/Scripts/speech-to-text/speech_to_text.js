@@ -2,9 +2,8 @@
 
 
     var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
-    var value = "listening now  ....";
+    var value = "listening now...";
     if (isChrome) {
-        const texts = document.querySelector(".texts");
 
         window.SpeechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
 
@@ -41,4 +40,15 @@
 
 
 
+}
+
+
+function onloadfunction() {
+
+    var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+
+    if (!isChrome) {
+        document.getElementById('rec-id').style.visibility = 'hidden';
+       // window.alert(isChrome);
+    }
 }
