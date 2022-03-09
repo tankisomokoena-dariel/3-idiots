@@ -1,4 +1,10 @@
-﻿
+﻿.login-input {
+    text-align: center;
+    box-align: center;
+    display: inline-block;
+    float: none;
+}
+
 body {
     height: 100%;
     background: linear-gradient(90deg, #0096FF 50%, #FFFFFF 50%);
