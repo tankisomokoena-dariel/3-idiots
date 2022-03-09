@@ -1,15 +1,19 @@
 ﻿@{
+
     Layout = null;
 }
 <script src="~/Scripts/speech-to-text/speech_to_text.js" type="text/javascript"></script>
 
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script>
+        window.addEventListener("load", onloadfunction);
+    </script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -132,13 +136,16 @@
                         <div class="search ml-5 mb-5">
                             <input type="text" id="speech_to_text" name="search" placeholder="Search" class="form-control p-2">
 
-
-                            <button type="button" class="rec-btn" onclick="recognize();">
+                          
+                            <button type="button" id ="rec-id"class="rec-btn" onclick="recognize();">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic" viewBox="0 0 16 16">
                                     <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />
                                     <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />
                                 </svg>
                             </button>
+                            
+
+
 
 
                             <button type="submit" class="search-btn">
