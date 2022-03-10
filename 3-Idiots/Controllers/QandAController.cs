@@ -15,10 +15,16 @@ namespace _3_Idiots.Controllers
         // GET: QandA
         public ActionResult Index()
         {
-            CheckSession();
-            int userID = Convert.ToInt32(Session["userID"]);
-            var myQuestions = QandAClient.ViewMyQuestionsAsync(userID).Result;
-            return View(myQuestions.ToList());
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                int userID = Convert.ToInt32(Session["userID"]);
+                var myQuestions = QandAClient.ViewMyQuestionsAsync(userID).Result;
+                return View(myQuestions.ToList());
+            }
         }
 
         // GET: QandA/Details/5
@@ -31,8 +37,15 @@ namespace _3_Idiots.Controllers
         // GET: QandA/Create
         public ActionResult Create()
         {
-            var result = QandAClient.UnuansweredQuestionsAsync().Result;
-            return View(result.ToList());
+            if (Session["userID"] != null)
+            {
+                var result = QandAClient.UnuansweredQuestionsAsync().Result;
+                return View(result.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // POST: QandA/Create
@@ -54,7 +67,6 @@ namespace _3_Idiots.Controllers
         // GET: QandA/Edit/5
         public ActionResult Edit(int id)
         {
-            CheckSession();
             var entry = QandAClient.GetAsync(id).Result;
             return View(entry);
         }
@@ -63,7 +75,6 @@ namespace _3_Idiots.Controllers
         [HttpPost]
         public ActionResult Edit([Bind(Include = "qaID, userID, answer, question")] QandA update)
         {
-            CheckSession();
             try
             {
                 // TODO: Add update logic here
@@ -107,19 +118,11 @@ namespace _3_Idiots.Controllers
         [HttpPost]
         public ActionResult Search(string search)
         {
-            CheckSession();
             int userID = Convert.ToInt32(Session["userID"]);
             var response = QandAClient.SearchAsync(search, userID).Result;
             return View(response);
-
         }
 
-        protected void CheckSession()
-        {
-            if (Session["userID"] == null)
-            {
-                RedirectToAction("Index", "Home");
-            }
-        }
     }
 }
+

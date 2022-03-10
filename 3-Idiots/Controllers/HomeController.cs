@@ -19,8 +19,14 @@ namespace _3_Idiots.Controllers
 
         public ActionResult Home()
         {
-            
-            return View();
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         public ActionResult Login(string email, string password)
@@ -48,16 +54,28 @@ namespace _3_Idiots.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Message = "Your application description page.";
+                return View();
+            }
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                ViewBag.Message = "Your contact page.";
+                return View();
+            }
         }
     }
 }
