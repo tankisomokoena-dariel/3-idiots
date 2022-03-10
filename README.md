@@ -23,5 +23,6 @@ For simplicity purposes, you can make the path refer to the API folder that is i
 11. Now you can click the "Generate Files" button, next to the "Generate Output" and your CSharp file will be created and saved on the specified path
 
 Python Model
+
 The python model utilised is a sentence processer that analyses strings to find strings that match. It matches searched questions with frequently asked questions that has been asked already. The model can also find user skills related to the searched question.
 
