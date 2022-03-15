@@ -3,6 +3,7 @@ using IdiotsAPI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -120,7 +121,36 @@ namespace _3_Idiots.Controllers
         {
             int userID = Convert.ToInt32(Session["userID"]);
             var response = QandAClient.SearchAsync(search, userID).Result;
-            return View(response);
+
+            if (search.ToLower().Contains("view information hub") || search.ToLower().Contains("open information hub") || search.ToLower().Contains("go to information hub"))
+            {
+                return RedirectToAction("Home", "Home");
+            }
+            else if (search.ToLower().Contains("view unanswered questions") || search.ToLower().Contains("open unanswered questions") || search.ToLower().Contains("go to unanswered questions"))
+            {
+                return RedirectToAction("Create");
+            }
+            else if (search.ToLower().Contains("view my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("go to my questions"))
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(response);
+            }
+        }
+
+        private static string getBetween(string strSource, string strStart, string strEnd)
+        {
+            if (strSource.Contains(strStart) && strSource.Contains(strEnd))
+            {
+                int Start, End;
+                Start = strSource.IndexOf(strStart, 0) + strStart.Length;
+                End = strSource.IndexOf(strEnd, Start);
+                return strSource.Substring(Start, End - Start);
+            }
+
+            return "";
         }
 
     }
