@@ -20,9 +20,20 @@
 
 
             if (e.results[0].isFinal) {
-                value = $("#speech_to_text").val();
-                value = text;
-                $("#speech_to_text").val(value);
+                /// if you want to use the record button to search
+                if (isSearch) {
+                    value = $("#speech_to_text").val();
+                    value = text;
+                    $("#speech_to_text").val(value);
+                } else { // if you want to interact with the site using the record button
+
+                    if (text.includes("open my YouTube")) {
+
+                        console.log("opening youtube");
+                        window.open("https://www.youtube.com/channel/UCdxaLo9ALJgXgOUDURRPGiQ");
+                    }
+                }
+
 
             }
         });
