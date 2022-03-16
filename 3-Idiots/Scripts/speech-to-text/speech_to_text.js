@@ -1,4 +1,5 @@
-﻿function recognize() {
+﻿
+function recognize(isSearch) {
 
 
     var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
@@ -26,12 +27,23 @@
                     value = text;
                     $("#speech_to_text").val(value);
                 } else { // if you want to interact with the site using the record button
+                    
+                    value = $("#speech_to_text").val();
+                    value = text;
+                    $("#speech_to_text").val(value);
 
-                    if (text.includes("open my YouTube")) {
-
-                        console.log("opening youtube");
-                        window.open("https://www.youtube.com/channel/UCdxaLo9ALJgXgOUDURRPGiQ");
-                    }
+                        var search_value = "view information hub";
+                        window.open('https://localhost:44331/QandA/Search?search=' + text, '_self');
+                        //var url = "~\Controllers\QandAController\Search";
+                        
+                        //var address = $("#Address").val();
+                        //$.ajax({
+                        //    type: "POST",
+                        //    url: url,
+                        //    data: { "search": search_value },
+                            
+                        //})
+                    
                 }
 
 

@@ -116,27 +116,37 @@ namespace _3_Idiots.Controllers
         }
 
         // Get: QandA/Search/searchString
-        [HttpPost]
-        public ActionResult Search(string search)
+        [HttpGet]
+        public ActionResult Search()
         {
-            int userID = Convert.ToInt32(Session["userID"]);
-            var response = QandAClient.SearchAsync(search, userID).Result;
+            if (Session["userID"] != null)
+            {
+                var search = HttpContext.Request.QueryString["search"];
 
-            if (search.ToLower().Contains("view information hub") || search.ToLower().Contains("open information hub") || search.ToLower().Contains("go to information hub"))
-            {
-                return RedirectToAction("Home", "Home");
-            }
-            else if (search.ToLower().Contains("view unanswered questions") || search.ToLower().Contains("open unanswered questions") || search.ToLower().Contains("go to unanswered questions"))
-            {
-                return RedirectToAction("Create");
-            }
-            else if (search.ToLower().Contains("view my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("go to my questions"))
-            {
-                return RedirectToAction("Index");
+
+                if (search.ToLower().Contains("view information hub") || search.ToLower().Contains("open information hub") || search.ToLower().Contains("go to information hub"))
+                {
+
+                    return RedirectToAction("Home", "Home");
+                }
+                else if (search.ToLower().Contains("view unanswered questions") || search.ToLower().Contains("open unanswered questions") || search.ToLower().Contains("go to unanswered questions"))
+                {
+                    return RedirectToAction("Create");
+                }
+                else if (search.ToLower().Contains("view my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("go to my questions"))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    int userID = Convert.ToInt32(Session["userID"]);
+                    var response = QandAClient.SearchAsync(search, userID).Result;
+                    return View(response);
+                }
             }
             else
             {
-                return View(response);
+                return RedirectToAction("Index","Home");
             }
         }
 
