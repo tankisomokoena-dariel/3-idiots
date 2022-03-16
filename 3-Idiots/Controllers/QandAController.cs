@@ -146,7 +146,38 @@ namespace _3_Idiots.Controllers
             }
             else
             {
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Search(string search)
+        {
+            if (Session["userID"] != null)
+            {
+                if (search.ToLower().Contains("view information hub") || search.ToLower().Contains("open information hub") || search.ToLower().Contains("go to information hub"))
+                {
+
+                    return RedirectToAction("Home", "Home");
+                }
+                else if (search.ToLower().Contains("view unanswered questions") || search.ToLower().Contains("open unanswered questions") || search.ToLower().Contains("go to unanswered questions"))
+                {
+                    return RedirectToAction("Create");
+                }
+                else if (search.ToLower().Contains("view my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("go to my questions"))
+                {
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    int userID = Convert.ToInt32(Session["userID"]);
+                    var response = QandAClient.SearchAsync(search, userID).Result;
+                    return View(response);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
             }
         }
 
