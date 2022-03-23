@@ -81,13 +81,14 @@ namespace _3_Idiots.Controllers
                 // TODO: Add update logic here
                 if (ModelState.IsValid)
                 {
-                    QandAClient.UpdateMyQuestionOrAnswerAsync(update.UserID, (int)update.QaID, update).Wait();
+                     QandAClient.UpdateMyQuestionOrAnswerAsync(update.UserID, (int)update.QaID, update).Wait();
                 }
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception e)
             {
-                return View();
+                ViewBag.ErrorMessage = e.Message;
+                return View("~/Views/Shared/Error.cshtml");
             }
         }
 
