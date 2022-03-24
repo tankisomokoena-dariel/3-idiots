@@ -35,20 +35,36 @@ namespace _3_Idiots.Controllers
             user.Email = email;
             user.Password = password;
             var response = client.LoginAsync(user).Result;
-            if (response == -1)
+            if (response == -3)
             {
                 ViewBag.ResponseMessage = "Server error!";
                 return View("~/Views/Home/Index.cshtml");
             }
-            else if (response != 0)
-            {
-                Session["userID"] = response;
-                return View("~/Views/Home/Home.cshtml");
-            }
-            else
+            else if (response == -2)
             {
                 ViewBag.ResponseMessage = "Incorrect email or password";
                 return View("~/Views/Home/Index.cshtml");
+            }else if(response == -1)
+            {
+                return View("~/Views/Home/ChangePassword.cshtml");
+            }
+            else
+            {
+                Session["userID"] = response;
+                return RedirectToAction("Home","Home");
+            }
+        }
+
+        public ActionResult ChangePassword(Authenticate user)
+        {
+            var isChanged = client.ChangeDefaultPasswordAsync(user).Result;
+            if (isChanged)
+            {
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View("~/Views/Shared/Error.cshtml");
             }
         }
 
