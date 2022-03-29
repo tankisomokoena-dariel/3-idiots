@@ -5,12 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using IdiotsAPI;
 using _3_Idiots.Models;
+using Newtonsoft.Json;
 
 namespace _3_Idiots.Controllers
 {
     public class HomeController : Controller
     {
         UsersClient client = new UsersClient();
+        QandAClient qandAClient = new QandAClient();
 
         public ActionResult Index()
         {
@@ -25,6 +27,9 @@ namespace _3_Idiots.Controllers
             }
             else
             {
+                var jsonString = JsonConvert.SerializeObject(qandAClient.GetQuestionsAsync().Result);
+                jsonString = jsonString.Replace('\'', ' ');
+                ViewBag.Questions = jsonString;
                 return View();
             }
         }
@@ -44,14 +49,15 @@ namespace _3_Idiots.Controllers
             {
                 ViewBag.ResponseMessage = "Incorrect email or password";
                 return View("~/Views/Home/Index.cshtml");
-            }else if(response == -1)
+            }
+            else if (response == -1)
             {
                 return View("~/Views/Home/ChangePassword.cshtml");
             }
             else
             {
                 Session["userID"] = response;
-                return RedirectToAction("Home","Home");
+                return RedirectToAction("Home", "Home");
             }
         }
 
