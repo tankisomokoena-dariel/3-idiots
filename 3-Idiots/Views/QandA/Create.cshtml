@@ -10,46 +10,36 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
+    <link rel="stylesheet" href="~/Content/IdiotsStyleSheet.css">
 </head>
 <body>
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.QaID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserID)
+                @Html.DisplayNameFor(model => model.Question)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Answer)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Question)
-            </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.QaID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Answer)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Question)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.QaID}) |
-                @Html.ActionLink("Details", "Details", new { id = item.QaID }) 
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Question)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Answer)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.QaID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.QaID })
+                </td>
+            </tr>
+        }
+
     </table>
 </body>
 </html>
