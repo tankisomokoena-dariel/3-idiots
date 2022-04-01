@@ -1,0 +1,58 @@
+﻿@model IEnumerable<IdiotsAPI.UserSkill>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Skills</title>
+    <link rel="stylesheet" href="~/Content/IdiotsStyleSheet.css">
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>
+                Description
+            </th>
+            <th>
+                Skill Level
+            </th>
+            <th>
+                Level Type
+            </th>
+            <th>
+                Date Created
+            </th>
+
+        </tr>
+        @{
+            int counter = 1;
+        }
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@counter</td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descriprion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SkillLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LevelType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+            </tr>
+            counter = counter + 1;
+        }
+    </table>
+</body>
+</html>

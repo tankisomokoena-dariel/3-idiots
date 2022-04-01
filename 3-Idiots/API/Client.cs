@@ -1933,24 +1933,20 @@ namespace IdiotsAPI
         }
 
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual System.Threading.Tasks.Task PutAsync(int id, SkillModify skill)
+        public virtual System.Threading.Tasks.Task PutAsync(UserSkill userSkill)
         {
-            return PutAsync(id, skill, System.Threading.CancellationToken.None);
+            return PutAsync(userSkill, System.Threading.CancellationToken.None);
         }
 
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <exception cref="ApiException">A server side error occurred.</exception>
-        public virtual async System.Threading.Tasks.Task PutAsync(int id, SkillModify skill, System.Threading.CancellationToken cancellationToken)
+        public virtual async System.Threading.Tasks.Task PutAsync(UserSkill userSkill, System.Threading.CancellationToken cancellationToken)
         {
-            if (id == null)
-                throw new System.ArgumentNullException("id");
-
-            if (skill == null)
-                throw new System.ArgumentNullException("skill");
+            if (userSkill == null)
+                throw new System.ArgumentNullException("userSkill");
 
             var urlBuilder_ = new System.Text.StringBuilder();
-            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Skills/Put/{id}");
-            urlBuilder_.Replace("{id}", System.Uri.EscapeDataString(ConvertToString(id, System.Globalization.CultureInfo.InvariantCulture)));
+            urlBuilder_.Append(BaseUrl != null ? BaseUrl.TrimEnd('/') : "").Append("/api/Skills/Put");
 
             var client_ = new System.Net.Http.HttpClient();
             var disposeClient_ = true;
@@ -1958,7 +1954,7 @@ namespace IdiotsAPI
             {
                 using (var request_ = new System.Net.Http.HttpRequestMessage())
                 {
-                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(skill, _settings.Value));
+                    var content_ = new System.Net.Http.StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(userSkill, _settings.Value));
                     content_.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
                     request_.Content = content_;
                     request_.Method = new System.Net.Http.HttpMethod("PUT");
@@ -2677,27 +2673,6 @@ namespace IdiotsAPI
     {
         [Newtonsoft.Json.JsonProperty("skillID", Required = Newtonsoft.Json.Required.Default, NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore)]
         public int? SkillID { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("levelType", Required = Newtonsoft.Json.Required.Always)]
-        public int LevelType { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("skillLevel", Required = Newtonsoft.Json.Required.Always)]
-        public int SkillLevel { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("dateCreated", Required = Newtonsoft.Json.Required.Always)]
-        [System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = true)]
-        public System.DateTimeOffset DateCreated { get; set; }
-
-        [Newtonsoft.Json.JsonProperty("userID", Required = Newtonsoft.Json.Required.Always)]
-        public int UserID { get; set; }
-
-    }
-
-    [System.CodeDom.Compiler.GeneratedCode("NJsonSchema", "13.15.9.0 (NJsonSchema v10.6.8.0 (Newtonsoft.Json v11.0.0.0))")]
-    public partial class SkillModify
-    {
-        [Newtonsoft.Json.JsonProperty("skill", Required = Newtonsoft.Json.Required.Always)]
-        public int Skill { get; set; }
 
         [Newtonsoft.Json.JsonProperty("levelType", Required = Newtonsoft.Json.Required.Always)]
         public int LevelType { get; set; }

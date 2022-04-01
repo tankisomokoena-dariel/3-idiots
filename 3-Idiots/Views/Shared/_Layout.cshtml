@@ -10,28 +10,29 @@
     @RenderSection("Styles", false)
 
     <style>
-		* {
-			padding: 0;
-			margin: 0;
-			box-sizing: border-box;
-		}
-		.navbar{
-           width: 100%;
-           top: 0px;
-           left: 0px;
-           position: relative;
-		}
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
 
-        .navbar-header{
+        .navbar {
+            width: 100%;
+            top: 0px;
+            left: 0px;
+            position: relative;
+        }
+
+        .navbar-header {
             float: left;
             display: block;
         }
-
     </style>
 
     <title>Dariel iHub</title>
     <link rel="shortcut icon" href="https://www.dariel.co.za/wp-content/uploads/2019/08/cropped-Dariel-Swoosh-32x32.png">
 
+    <link rel="stylesheet" href="~/Content/IdiotsStyleSheet.css">
 
 </head>
 <body>
@@ -46,11 +47,12 @@
 			@*	@Html.ActionLink("iHub", "Home", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
 			@*</div>*@
 			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav mr-auto">
-					<li class="nav-item ">@Html.ActionLink("Home", "Home", "Home")</li>
-					<li class="nav-item ">@Html.ActionLink("My Questions", "Index", "QandA")</li>
-					<li class="nav-item ">@Html.ActionLink("Answer Questions", "Create", "QandA")</li>
-				</ul>
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item ">@Html.ActionLink("Home", "Home", "Home")</li>
+                    <li class="nav-item ">@Html.ActionLink("My Questions", "Index", "QandA")</li>
+                    <li class="nav-item ">@Html.ActionLink("Answer Questions", "Create", "QandA")</li>
+                    <li class="nav-item ">@Html.ActionLink("My Skills", "GetUserSkills", "Skills")</li>
+                </ul>
 			</div>
 		</div>
 
