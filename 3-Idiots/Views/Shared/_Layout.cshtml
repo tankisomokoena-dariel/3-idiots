@@ -10,18 +10,21 @@
     @RenderSection("Styles", false)
 
     <style>
-        * {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-        }
+		* {
+			padding: 0;
+			margin: 0;
+			
+			box-sizing: border-box;
+		}
 
-        .navbar {
-            width: 100%;
-            top: 0px;
-            left: 0px;
-            position: relative;
-        }
+		.navbar {
+			width: 100%;
+			top: 0px;
+			left: 0px;
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+			position: relative;
+		}
 
         .navbar-header {
             float: left;
@@ -32,7 +35,7 @@
     <title>Dariel iHub</title>
     <link rel="shortcut icon" href="https://www.dariel.co.za/wp-content/uploads/2019/08/cropped-Dariel-Swoosh-32x32.png">
 
-    <link rel="stylesheet" href="~/Content/IdiotsStyleSheet.css">
+    @*<link rel="stylesheet" href="~/Content/IdiotsStyleSheet.css">*@
 
 </head>
 <body>
@@ -67,7 +70,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - iHub</p>
+            <p>&copy; @DateTime.Now.Year - Dariel iHub</p>
         </footer>
     </div>
 
