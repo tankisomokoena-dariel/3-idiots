@@ -23,16 +23,109 @@
 
     <title>Dariel</title>
     <link rel="shortcut icon" href="https://www.dariel.co.za/wp-content/uploads/2019/08/cropped-Dariel-Swoosh-32x32.png">
-    <link rel="stylesheet" href="~/Content/IdiotsStyleSheet.css">
+    
+	<style>
+
+
+		html, body {
+			overflow: hidden;
+			padding: 0;
+			margin: 0;
+			height: 100%;
+			background-image: url('../Content/images/background.jpg');
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+
+		i {
+			font: italic;
+		}
+
+		.container {
+			height: 100%;
+			margin-top: 120px;
+		}
+
+		.search {
+			width: 80%;
+			height: 50%;
+		}
+
+		.row {
+			background: white;
+			border-radius: 30px;
+			box-shadow: 18px 18px 22px black;
+			position: static;
+			/*place div center horizontally*/
+			/*margin-right: auto;
+			margin-left: auto;
+			margin-top: auto;
+			margin-bottom: auto;*/
+		}
+
+		img {
+			border-top-left-radius: 30px;
+			border-bottom-left-radius: 30px;
+			border-top-right-radius: 30px;
+			border-bottom-right-radius: 30px;
+		}
+
+		.logo-img {
+			position: relative;
+			width: 50%;
+			left: 20%;
+		}
+
+		.form-control {
+			height: 50px;
+			width: 80%;
+			float: left;
+		}
+
+		.search-btn {
+			border: none;
+			float: right;
+			outline: none;
+			height: 50px;
+			width: 10%;
+			background-color: gray;
+			/*color: white;*/
+			border-top-left-radius: 4px;
+			border-bottom-left-radius: 4px;
+		}
+
+		.rec-btn {
+			border: none;
+			float: right;
+			outline: none;
+			height: 50px;
+			width: 10%;
+			background-color: gray;
+			/*color: white;*/
+			border-top-right-radius: 4px;
+			border-bottom-right-radius: 4px;
+		}
+
+			.search-btn:hover {
+				background: white;
+				border: 1px solid;
+				color: black;
+			}
+
+		.rec-btn:hover {
+			background: white;
+			border: 1px solid;
+			color: black;
+		}
+	</style>
 </head>
 <body>
 
 
     <div class="container">
         <div class="row no-gutters align-items-center justify-content-center ">
-            @*<div class="col-lg-5">
-                    <img src="../Content/images/questionmark.jpg" class="img-fluid" alt="">
-                </div>*@
+          
 
             <div class="col-lg-7 px-5 pt-2">
                 <div class="logo-img">
@@ -46,20 +139,24 @@
                 @using (Html.BeginForm("Search", "QandA", FormMethod.Post))
                 {
                     <div class="form-row">
-                        <div class="search ml-5 mb-5 autocomplete">
+                        <div class="search ml-5 mb-5">
                             <input type="text" id="speech_to_text" name="search" autocomplete="off" placeholder="Search" class="form-control p-2">
+							
                             <button type="button" id="rec-id" class="rec-btn" onclick="recognize(false);">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic" viewBox="0 0 16 16">
-                                    <path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />
-                                    <path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />
-                                </svg>
-                            </button>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-mic" viewBox="0 0 16 16">
+									<path d="M3.5 6.5A.5.5 0 0 1 4 7v1a4 4 0 0 0 8 0V7a.5.5 0 0 1 1 0v1a5 5 0 0 1-4.5 4.975V15h3a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1h3v-2.025A5 5 0 0 1 3 8V7a.5.5 0 0 1 .5-.5z" />
+									<path d="M10 8a2 2 0 1 1-4 0V3a2 2 0 1 1 4 0v5zM8 0a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0V3a3 3 0 0 0-3-3z" />
+								</svg>
+							</button>
 
-                            <button type="submit" class="search-btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
-                                </svg>
-                            </button>
+							<button type="submit" class="search-btn">
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+									<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+								</svg>
+							</button>
+
+                            
+
                         </div>
                     </div>
                 }
