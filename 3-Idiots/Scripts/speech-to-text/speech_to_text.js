@@ -32,7 +32,7 @@ function recognize(isSearch) {
                     //value = text;
                     //$("#speech_to_text").val(value);
 
-                       // var search_value = "view information hub";
+                    // var search_value = "view information hub";
                         window.open('https://localhost:44331/QandA/Search?search=' + text, '_self');
                        
                     
@@ -63,7 +63,9 @@ function onloadfunction() {
     var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
 
     if (!isChrome) {
+        document.getElementById('rec-control-id').style.visibility = 'hidden';
         document.getElementById('rec-id').style.visibility = 'hidden';
+
        // window.alert(isChrome);
     }
 }
