@@ -125,18 +125,22 @@ namespace _3_Idiots.Controllers
                 var search = HttpContext.Request.QueryString["search"];
 
 
-                if (search.ToLower().Contains("view information hub") || search.ToLower().Contains("open information hub") || search.ToLower().Contains("go to information hub"))
+                if (search.ToLower().Contains("view information hub") || search.ToLower().Contains("open home") || search.ToLower().Contains("open information hub") || search.ToLower().Contains("go to information hub"))
                 {
 
                     return RedirectToAction("Home", "Home");
                 }
-                else if (search.ToLower().Contains("view unanswered questions") || search.ToLower().Contains("open unanswered questions") || search.ToLower().Contains("go to unanswered questions"))
+                else if (search.ToLower().Contains("view unanswered questions") || search.ToLower().Contains("unaswered questions") || search.ToLower().Contains("open unanswered questions") || search.ToLower().Contains("go to unanswered questions"))
                 {
                     return RedirectToAction("Create");
                 }
                 else if (search.ToLower().Contains("view my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("go to my questions"))
                 {
                     return RedirectToAction("Index");
+                }
+                else if ( search.ToLower().Contains("open skills") ||search.ToLower().Contains("open skill") || search.ToLower().Contains("open my skills") )
+                {
+                    return RedirectToAction("GetUserSkills", "Skills");
                 }
                 else
                 {

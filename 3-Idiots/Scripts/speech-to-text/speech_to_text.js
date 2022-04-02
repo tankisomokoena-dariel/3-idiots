@@ -28,21 +28,13 @@ function recognize(isSearch) {
                     $("#speech_to_text").val(value);
                 } else { // if you want to interact with the site using the record button
                     
-                    value = $("#speech_to_text").val();
-                    value = text;
-                    $("#speech_to_text").val(value);
+                    //value = $("#speech_to_text").val();
+                    //value = text;
+                    //$("#speech_to_text").val(value);
 
-                        var search_value = "view information hub";
+                       // var search_value = "view information hub";
                         window.open('https://localhost:44331/QandA/Search?search=' + text, '_self');
-                        //var url = "~\Controllers\QandAController\Search";
-                        
-                        //var address = $("#Address").val();
-                        //$.ajax({
-                        //    type: "POST",
-                        //    url: url,
-                        //    data: { "search": search_value },
-                            
-                        //})
+                       
                     
                 }
 
