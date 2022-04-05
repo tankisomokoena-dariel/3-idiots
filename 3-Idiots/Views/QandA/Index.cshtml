@@ -13,9 +13,41 @@
 
     <title>Index</title>
     <link rel="stylesheet" href="~/Content/IdiotsStyleSheet.css">
+<style>
+	 
+
+    *{
+        box-sizing: border-box;
+    }
+
+    .wrap{
+        margin: auto;
+        width: 100%;
+    }
+
+
+	.card {
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 16px;
+        text-align: center;
+        transition: 0.4s;
+        border-radius: 7px;
+        width: 100%;
+        background-color: aliceblue;
+        margin: 10px;
+	}
+
+		.card:hover {
+			background-color: lightskyblue;
+			cursor: pointer;
+		}
+
+
+
+</style>
 </head>
 <body>
-    <table class="table table-bordered">
+    @*<table class="table table-bordered">
         <thead class="thead-light">
             <tr>
                 <th scope="col">
@@ -44,6 +76,19 @@
     </tr>
     }
     
-    </table>
+    </table>*@
+
+    @foreach (var item in Model)
+			{
+                <div class="wrap">
+                    <div class="card">
+                        <div class="card-item">
+                            <h5> <b> @item.Question</b></h5>
+                            <p> @item.Answer</p>
+							<p> @Html.ActionLink("Modify Question", "Edit", new { id = (int)item.QaID })</p>
+                        </div>
+                    </div>
+                </div>
+			}
 </body>
 </html>
