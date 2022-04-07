@@ -9,34 +9,29 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <script src="~/Scripts/speech-to-text/speech_to_text.js" type="text/javascript"></script>
-
     <title>Search</title>
-    <link rel="stylesheet" href="~/Content/IdiotsStyleSheet.css">
 </head>
 <body>
-    <div class="col-lg-12">
-        <h4>Dariel iHub</h4>
+    <div>
+        <h4>SearchResult</h4>
         <hr />
         <dl class="dl-horizontal">
-            @*<dt>
+            <dt>
                 @Html.DisplayNameFor(model => model.Answer)
-            </dt>*@
-    
+            </dt>
+
             <dd>
                 @Html.DisplayFor(model => model.Answer)
             </dd>
-    
-            @*<dt>
+
+            <dt>
                 @Html.DisplayNameFor(model => model.Expert)
-            </dt>*@
-    
+            </dt>
+
             <dd>
                 @Html.DisplayFor(model => model.Expert)
             </dd>
         </dl>
     </div>
-
-
 </body>
 </html>
