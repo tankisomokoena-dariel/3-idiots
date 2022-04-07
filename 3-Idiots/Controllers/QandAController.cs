@@ -116,19 +116,24 @@ namespace _3_Idiots.Controllers
             }
         }
 
-        // Get: QandA/Search/searchString
-        [HttpGet]
+       // Get: QandA/Search/searchString
+       [HttpGet]
         public ActionResult Search()
         {
             if (Session["userID"] != null)
             {
                 var search = HttpContext.Request.QueryString["search"];
-
-
-              
+                if (!string.IsNullOrWhiteSpace(search))
+                {
                     int userID = Convert.ToInt32(Session["userID"]);
                     var response = QandAClient.SearchAsync(search, userID).Result;
                     return View(response);
+                }
+                else
+                {
+                    ViewBag.ResponseMessage = "Cannot search an empty input";
+                    return View("~/Views/Home/Home.cshtml");
+                }
             }
             else
             {
@@ -181,18 +186,10 @@ namespace _3_Idiots.Controllers
         {
             if (Session["userID"] != null)
             {
-                if (search.ToLower().Contains("view information hub") || search.ToLower().Contains("open information hub") || search.ToLower().Contains("go to information hub"))
+                if (string.IsNullOrEmpty(search))
                 {
-
-                    return RedirectToAction("Home", "Home");
-                }
-                else if (search.ToLower().Contains("view unanswered questions") || search.ToLower().Contains("open unanswered questions") || search.ToLower().Contains("go to unanswered questions"))
-                {
-                    return RedirectToAction("Create");
-                }
-                else if (search.ToLower().Contains("view my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("go to my questions"))
-                {
-                    return RedirectToAction("Index");
+                    ViewBag.ResponseMessage = "Cannot search an empty input";
+                    return View("~/Views/Home/Home.cshtml");
                 }
                 else
                 {

@@ -33,7 +33,7 @@ function recognize(isSearch) {
                     if ((text.includes("type question") || text.includes("type")) && document.getElementById("speech_to_text") != null) {
                         document.getElementById("speech_to_text").focus()
                     }
-                    else if (text.includes("record question") && document.getElementById("rec-id") != null) {
+                    else if (text.includes("record") && document.getElementById("rec-id") != null) {
                         document.getElementById("rec-id").click()
                     }
                     else {
