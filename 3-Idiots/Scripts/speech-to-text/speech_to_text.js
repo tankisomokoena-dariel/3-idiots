@@ -10,6 +10,7 @@ function recognize(isSearch) {
 
         const recognition = new SpeechRecognition();
         recognition.interimResults = true;
+
         $("#speech_to_text").val(value);
 
         recognition.addEventListener("result", (e) => {
@@ -66,9 +67,14 @@ function onloadfunction() {
     var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
 
     if (!isChrome) {
-        document.getElementById('rec-control-id').style.visibility = 'hidden';
-        document.getElementById('rec-id').style.visibility = 'hidden';
+        if (document.getElementById('rec-control-id') != null) {
+            document.getElementById('rec-control-id').style.visibility = 'hidden';
+        }
+        if (document.getElementById('rec-id') != null) {
+            document.getElementById('rec-id').style.visibility = 'hidden';
 
-       // window.alert(isChrome);
+        }
+
+       
     }
 }
