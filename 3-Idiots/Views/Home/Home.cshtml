@@ -121,7 +121,7 @@
             color: black;
         }
 
-        .alert {
+        .alert,.navigate {
             background: #cdcaca;
             padding: 20px 40px;
             min-width: 420px;
@@ -146,7 +146,7 @@
                 cursor: pointer;
             }*/
 
-            .alert.hide {
+            .alert.hide, navigate.hide {
                 display: none;
             }
 
@@ -190,6 +190,11 @@
             <div class="alert hide">
                 <span> <b>You can search for an Expert, Answer or an Article.</b></span>
             </div>
+
+            <div class="navigate hide">
+                <span> <b>listening</b></span>
+            </div>
+
             <div class="col-lg-7 px-5 pt-2">
                 <div class="logo-img">
                     <img src="https://www.dariel.co.za/wp-content/uploads/2019/08/cropped-dariel-logo-Fullcolour-300x100.png" class="img-fluid" />
@@ -211,7 +216,7 @@
                         <div class="search ml-5 mr-5 mb-5">
                             <input type="text" id="speech_to_text" name="search" autocomplete="off" placeholder="Search" class="form-control m-1">
 
-                            <button id ="search-btn" type="submit" class="search-btn m-1">
+                            <button id="search-btn" type="submit" class="search-btn m-1">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                     <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
                                 </svg>
@@ -245,7 +250,7 @@
         const flag = localStorage.getItem("Run");
         var secs = 0;
         var id = setInterval(function () {
-            secs++; console.log(secs);
+            secs++;// console.log(secs);
 
             if (secs > 1 && secs < 3 && flag == "1") {
                 $('.alert').removeClass("hide");

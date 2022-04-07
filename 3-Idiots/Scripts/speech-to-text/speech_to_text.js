@@ -4,6 +4,10 @@ function recognize(isSearch) {
 
     var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
     var value = "listening now...";
+
+   
+    
+
     if (isChrome) {
 
         window.SpeechRecognition = window.speechRecognition || window.webkitSpeechRecognition;
@@ -12,9 +16,14 @@ function recognize(isSearch) {
         recognition.interimResults = true;
 
         $("#speech_to_text").val(value);
+        $('.navigate').removeClass("hide");
+        $('.navigate').addClass("show");
+
 
         recognition.addEventListener("result", (e) => {
 
+
+           
             const text = Array.from(e.results)
                 .map((result) => result[0])
                 .map((result) => result.transcript)
@@ -47,18 +56,24 @@ function recognize(isSearch) {
 
 
             }
+
+           
         });
 
 
 
         recognition.start();
+        recognition.onend = () => {
+            $('.navigate').addClass("hide");
+            $('.navigate').removeClass("show");
+        };
 
     } else {
         value = "use chrome if you want to utilize the voice search";
         $("#speech_to_text").val(value);
     }
 
-
+    
 
 
 
