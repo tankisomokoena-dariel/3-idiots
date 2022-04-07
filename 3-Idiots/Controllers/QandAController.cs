@@ -81,11 +81,11 @@ namespace _3_Idiots.Controllers
                 // TODO: Add update logic here
                 if (ModelState.IsValid)
                 {
-                     QandAClient.UpdateMyQuestionOrAnswerAsync(update.UserID, (int)update.QaID, update).Wait();
+                    QandAClient.UpdateMyQuestionOrAnswerAsync(update.UserID, (int)update.QaID, update).Wait();
                 }
                 return RedirectToAction("Index");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 ViewBag.ErrorMessage = e.Message;
                 return View("~/Views/Shared/Error.cshtml");
@@ -116,8 +116,8 @@ namespace _3_Idiots.Controllers
             }
         }
 
-       // Get: QandA/Search/searchString
-       [HttpGet]
+        // Get: QandA/Search/searchString
+        [HttpGet]
         public ActionResult Search()
         {
             if (Session["userID"] != null)
@@ -219,4 +219,3 @@ namespace _3_Idiots.Controllers
 
     }
 }
-
