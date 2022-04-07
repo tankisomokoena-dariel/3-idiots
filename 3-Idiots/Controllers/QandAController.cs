@@ -125,28 +125,49 @@ namespace _3_Idiots.Controllers
                 var search = HttpContext.Request.QueryString["search"];
 
 
-                if (search.ToLower().Contains("view information hub") || search.ToLower().Contains("open home") || search.ToLower().Contains("open information hub") || search.ToLower().Contains("go to information hub"))
+              
+                    int userID = Convert.ToInt32(Session["userID"]);
+                    var response = QandAClient.SearchAsync(search, userID).Result;
+                    return View(response);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Navigate()
+        {
+
+            //var currentUrl = this.Request.RawUrl;
+
+            if (Session["userID"] != null)
+            {
+                var command = HttpContext.Request.QueryString["search"];
+                var currentUrl = HttpContext.Request.QueryString["currentUrl"];
+
+                if (command.ToLower().Contains("view information hub") || command.ToLower().Contains("open home") || command.ToLower().Contains("open information hub") || command.ToLower().Contains("go to information hub"))
                 {
 
                     return RedirectToAction("Home", "Home");
                 }
-                else if (search.ToLower().Contains("view unanswered questions") || search.ToLower().Contains("unaswered questions") || search.ToLower().Contains("open unanswered questions") || search.ToLower().Contains("go to unanswered questions"))
+                else if (command.ToLower().Contains("view unanswered questions") || command.ToLower().Contains("unaswered questions") || command.ToLower().Contains("open unanswered questions") || command.ToLower().Contains("go to unanswered questions"))
                 {
                     return RedirectToAction("Create");
                 }
-                else if (search.ToLower().Contains("view my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("open my questions") || search.ToLower().Contains("go to my questions"))
+                else if (command.ToLower().Contains("view my questions") || command.ToLower().Contains("open  questions") || command.ToLower().Contains("open my questions") || command.ToLower().Contains("open my question") || command.ToLower().Contains("go to my questions"))
                 {
                     return RedirectToAction("Index");
                 }
-                else if ( search.ToLower().Contains("open skills") ||search.ToLower().Contains("open skill") || search.ToLower().Contains("open my skills") )
+                else if (command.ToLower().Contains("open skills") || command.ToLower().Contains("open skill") || command.ToLower().Contains("open my skills"))
                 {
                     return RedirectToAction("GetUserSkills", "Skills");
                 }
                 else
                 {
-                    int userID = Convert.ToInt32(Session["userID"]);
-                    var response = QandAClient.SearchAsync(search, userID).Result;
-                    return View(response);
+                    //Response.Redirect(Request.RawUrl);
+                    return Redirect(currentUrl);
                 }
             }
             else
