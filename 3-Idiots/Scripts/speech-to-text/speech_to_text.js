@@ -15,7 +15,7 @@ function recognize(isSearch) {
         const recognition = new SpeechRecognition();
         recognition.interimResults = true;
 
-        $("#speech_to_text").val(value);
+       // $("#speech_to_text").val(value);
         $('.navigate').removeClass("hide");
         $('.navigate').addClass("show");
 
