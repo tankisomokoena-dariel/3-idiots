@@ -147,20 +147,20 @@ namespace _3_Idiots.Controllers
                 var command = HttpContext.Request.QueryString["search"];
                 var currentUrl = HttpContext.Request.QueryString["currentUrl"];
 
-                if (command.ToLower().Contains("view information hub") || command.ToLower().Contains("open home") || command.ToLower().Contains("open information hub") || command.ToLower().Contains("go to information hub"))
+                if (command.ToLower().Contains("information hub") || command.ToLower().Contains("home"))
                 {
 
                     return RedirectToAction("Home", "Home");
                 }
-                else if (command.ToLower().Contains("view unanswered questions") || command.ToLower().Contains("unaswered questions") || command.ToLower().Contains("open unanswered questions") || command.ToLower().Contains("go to unanswered questions"))
+                else if (command.ToLower().Contains("unanswered"))
                 {
                     return RedirectToAction("Create");
                 }
-                else if (command.ToLower().Contains("view my questions") || command.ToLower().Contains("open  questions") || command.ToLower().Contains("open my questions") || command.ToLower().Contains("open my question") || command.ToLower().Contains("go to my questions"))
+                else if (command.ToLower().Contains("question") || command.ToLower().Contains("questions"))
                 {
                     return RedirectToAction("Index");
                 }
-                else if (command.ToLower().Contains("open skills") || command.ToLower().Contains("open skill") || command.ToLower().Contains("open my skills"))
+                else if (command.ToLower().Contains("skill") || command.ToLower().Contains("skills"))
                 {
                     return RedirectToAction("GetUserSkills", "Skills");
                 }
