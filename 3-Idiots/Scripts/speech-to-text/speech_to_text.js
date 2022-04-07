@@ -36,6 +36,9 @@ function recognize(isSearch) {
                     else if (text.includes("record") && document.getElementById("rec-id") != null) {
                         document.getElementById("rec-id").click()
                     }
+                    else if (text.includes("search") && document.getElementById("search-btn") != null) {
+                        document.getElementById("search-btn").click()
+                    }
                     else {
                         window.open('https://localhost:44331/QandA/Navigate?search=' + text + '&currentUrl=' + window.location.href, '_self');
 
