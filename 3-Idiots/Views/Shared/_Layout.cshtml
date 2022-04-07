@@ -20,19 +20,28 @@
             box-sizing: border-box;
         }
 
-        .navbar {
-            width: 100%;
-            top: 0px;
-            left: 0px;
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-            position: relative;
-        }
+		.navbar {
+			width: 100%;
+			top: 0px;
+			left: 0px;
+			border-top-left-radius: 0;
+			border-top-right-radius: 0;
+			margin-bottom: 0px;
+			position: relative;
+		}
 
         .navbar-header {
             float: left;
             display: block;
         }
+
+		.container {
+			margin-left: 0px;
+			margin-right: 0px;
+			width: 100%;
+			height: 100%;
+		}
+
     </style>
 
     <title>Dariel iHub</title>
@@ -71,7 +80,6 @@
     </nav>
     <div class="container body-content">
         @RenderBody()
-        <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - Dariel iHub</p>
         </footer>

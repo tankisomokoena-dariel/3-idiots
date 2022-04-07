@@ -1,38 +1,195 @@
 ﻿@model IdiotsAPI.SearchResult
 
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = "QandAController.cs";
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Search</title>
-    <link rel="stylesheet" href="~/Content/IdiotsStyleSheet.css">
+	<meta name="viewport" content="width=device-width" />
+	<title>Search</title>
+	@*<link rel="stylesheet" href="~/Content/IdiotsStyleSheet.css">*@
 </head>
+
+<style>
+
+	html, body {
+		padding: 0px;
+		margin: 0px;
+		height: 100%;
+		width: 100%;
+		overflow: hidden;
+		background-image: url('../Content/images/background.jpg');
+		background-attachment: fixed;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	.div-answer {
+		display: inline-block;
+		background: #b8b8b8;
+		width: 50%;
+		height: 50%;
+		padding: 5px;
+		background-clip: content-box;
+		border-collapse: separate;
+		border-radius: 12px;
+	}
+
+	.div-expert {
+		display: inline-block;
+		float: left;
+		background: #b8b8b8;
+		width: 50%;
+		height: 50%;
+		padding: 5px;
+		background-clip: content-box;
+		border-collapse: separate;
+		border-radius: 12px;
+	}
+
+	.div-article {
+		background: #b8b8b8;
+		width: 100%;
+		height: 40%;
+		border-collapse: separate;
+		border-radius: 12px;
+		padding: 5px;
+		background-clip: content-box;
+	}
+
+	.alertprocesstime {
+		background: #b6ff00;
+		padding-top: 10px;
+		min-width: 150px;
+		height: 50px;
+		position: fixed;
+		text-align: center;
+		right: 550px;
+		top: 130px;
+		overflow: hidden;
+		border-radius: 5px;
+		border-left: 8px solid black;
+		cursor: pointer;
+	}
+
+		/*.alert .close-btn {
+				position: absolute;
+				right: 0px;
+				top: 50px;
+				transform: translate(-50%);
+				background: black;
+				padding: 20px 18px;
+                cursor: pointer;
+			}*/
+
+	.alertprocesstime.hide {
+		display: none;
+	}
+
+	@@keyframes show_slide {
+		0% {
+			transform: translateX(100%);
+		}
+
+		40% {
+			transform: translateX(-10%)
+		}
+
+		80% {
+			transform: translateY(0%)
+		}
+
+		100% {
+			transform: translateY(-10%)
+		}
+	}
+</style>
 <body>
-    <div>
-        <h4>SearchResult</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Answer)
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Answer)
-            </dd>
+	<div class="div-answer">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Expert)
-            </dt>
+	</div>
 
-            <dd>
-                @Html.DisplayFor(model => model.Expert)
-            </dd>
-        </dl>
-    </div>
+	<div class="div-expert">
+
+	</div>
+
+	<div class="div-article">
+
+	</div>
+
+
+	@*<div>
+			<h4>SearchResult</h4>
+			<hr />
+			<dl class="dl-horizontal">
+				<dt>
+					@Html.DisplayNameFor(model => model.Answer)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Answer)
+				</dd>
+
+				<dt>
+					@Html.DisplayNameFor(model => model.Expert)
+				</dt>
+
+				<dd>
+					@Html.DisplayFor(model => model.Expert)
+				</dd>
+			</dl>
+		</div>*@
+
+
+	@*@{
+
+			string answerString = Model.Answer;
+			string expertString = Model.Expert;
+			string processTime = "Processed in "+Model.Processing_time;
+
+			<div class="alertprocesstime hide">
+				<p> @processTime</p>
+			</div>
+
+
+
+			string[] answers = answerString.Split(',');
+			string[] experts = expertString.Split(',');
+
+			foreach (var xpt in experts)
+			{
+				<div class="wrap">
+					<div class="card">
+						<div class="card-item">
+							<h5> <b> @xpt</b></h5>
+
+						</div>
+					</div>
+				</div>
+			}
+
+		}
+
+		<script>
+			var secs = 0;
+			var id = setInterval(function () {
+				secs++; console.log(secs);
+
+				if (secs > 1 && secs < 3) {
+					$('.alertprocesstime').removeClass("hide");
+					$('.alertprocesstime').addClass("show");
+				}
+				if (secs > 5000) {
+					$('.alertprocesstime').addClass("hide");
+					$('.alertprocesstime').removeClass("show");
+				}
+			}, 1000);
+		</script>*@
+
 </body>
 </html>
