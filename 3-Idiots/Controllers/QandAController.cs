@@ -72,6 +72,13 @@ namespace _3_Idiots.Controllers
             return View(entry);
         }
 
+        // GET: QandA/Edit/5
+        public ActionResult EditQuestion(int id)
+        {
+            var entry = QandAClient.GetAsync(id).Result;
+            return View(entry);
+        }
+
         // POST: QandA/Edit/5
         [HttpPost]
         public ActionResult Edit([Bind(Include = "qaID, userID, answer, question")] QandA update)
@@ -81,11 +88,31 @@ namespace _3_Idiots.Controllers
                 // TODO: Add update logic here
                 if (ModelState.IsValid)
                 {
-                     QandAClient.UpdateMyQuestionOrAnswerAsync(update.UserID, (int)update.QaID, update).Wait();
+                    QandAClient.UpdateMyQuestionOrAnswerAsync(update.UserID, (int)update.QaID, update).Wait();
                 }
                 return RedirectToAction("Index");
             }
-            catch(Exception e)
+            catch (Exception e)
+            {
+                ViewBag.ErrorMessage = e.Message;
+                return View("~/Views/Shared/Error.cshtml");
+            }
+        }
+
+        // POST: QandA/Edit/5
+        [HttpPost]
+        public ActionResult EditQuestion([Bind(Include = "qaID, userID, answer, question")] QandA update)
+        {
+            try
+            {
+                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    QandAClient.UpdateMyQuestionOrAnswerAsync(update.UserID, (int)update.QaID, update).Wait();
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception e)
             {
                 ViewBag.ErrorMessage = e.Message;
                 return View("~/Views/Shared/Error.cshtml");
@@ -116,8 +143,8 @@ namespace _3_Idiots.Controllers
             }
         }
 
-       // Get: QandA/Search/searchString
-       [HttpGet]
+        // Get: QandA/Search/searchString
+        [HttpGet]
         public ActionResult Search()
         {
             if (Session["userID"] != null)
@@ -219,4 +246,3 @@ namespace _3_Idiots.Controllers
 
     }
 }
-
