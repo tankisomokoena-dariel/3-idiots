@@ -26,16 +26,19 @@ function recognize(isSearch) {
                     value = $("#speech_to_text").val();
                     value = text;
                     $("#speech_to_text").val(value);
-                } else { // if you want to interact with the site using the record button
-                    
-                    //value = $("#speech_to_text").val();
-                    //value = text;
-                    //$("#speech_to_text").val(value);
+                }
+                else { 
 
-                    // var search_value = "view information hub";
-                        window.open('https://localhost:44331/QandA/Search?search=' + text, '_self');
-                       
-                    
+                    if ((text.includes("type question") || text.includes("type")) && document.getElementById("speech_to_text") != null) {
+                        document.getElementById("speech_to_text").focus()
+                    }
+                    else if (text.includes("record question") && document.getElementById("rec-id") != null) {
+                        document.getElementById("rec-id").click()
+                    }
+                    else {
+                        window.open('https://localhost:44331/QandA/Navigate?search=' + text + '&currentUrl=' + window.location.href, '_self');
+
+                    }
                 }
 
 
