@@ -35,7 +35,7 @@
 		display: inline-block;
 		background: #b8b8b8;
 		width: 50%;
-		height: 50%;
+		height: 80%;
 		padding: 5px;
 		background-clip: content-box;
 		border-collapse: separate;
@@ -49,7 +49,7 @@
 		float: right;
 		background: #b8b8b8;
 		width: 50%;
-		height: 50%;
+		height: 80%;
 		padding: 5px;
 		padding-right: 5px;
 		background-clip: content-box;
@@ -200,6 +200,8 @@
 	{
 		string[] answers = answerString.Split(',');
 		string[] experts = expertString.Split(',');
+		string xpt_format = "";
+		string[] names = new string[2];
 
 
 		<div class="div-answer">
@@ -237,8 +239,10 @@
 				}
 				else
 				{
+					names = xpt.Split(' ');
+					xpt_format = names[0].ToLower() + "." +names[1].ToLower() + "@darielihub.co.za";
 					<div class="card">
-						<h5> <b> @xpt</b></h5>
+						<h5> <b> @xpt_format</b></h5>
 					</div>
 				}
 
