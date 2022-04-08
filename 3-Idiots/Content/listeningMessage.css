@@ -1,0 +1,44 @@
+﻿
+
+.navigate {
+    background: #cdcaca;
+    padding: 20px 40px;
+    min-width: 420px;
+    height: 80px;
+    position: fixed;
+    text-align: center;
+    right: 550px;
+    top: 130px;
+    overflow: hidden;
+    border-radius: 5px;
+    border-left: 8px solid black;
+    cursor: pointer;
+}
+
+   
+
+ navigate.hide {
+    display: none;
+}
+
+@@keyframes show_slide {
+    0% {
+        transform: translateX(100%);
+    }
+
+    40% {
+        transform: translateX(-10%)
+    }
+
+    80% {
+        transform: translateY(0%)
+    }
+
+    100% {
+        transform: translateY(-10%)
+    }
+}
+
+
+}
+
