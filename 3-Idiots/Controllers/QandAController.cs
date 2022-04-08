@@ -110,7 +110,7 @@ namespace _3_Idiots.Controllers
                 {
                     QandAClient.UpdateMyQuestionOrAnswerAsync(update.UserID, (int)update.QaID, update).Wait();
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "QandA");
             }
             catch (Exception e)
             {

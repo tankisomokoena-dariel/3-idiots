@@ -196,15 +196,11 @@
 			</div>*@
 
 
+	if (answerString != null & expertString != null)
+	{
 		string[] answers = answerString.Split(',');
 		string[] experts = expertString.Split(',');
 
-		string[] testc = new string[50];
-
-		for (int i = 0; i < 50; i++)
-		{
-			testc[i] = "testc_" + i;
-		}
 
 		<div class="div-answer">
 			<h4>Answers</h4>
@@ -248,21 +244,15 @@
 
 			}
 
-		</div>
 
-		<div class="div-article">
-			<h4>Articles</h4>
-			<div class="article-holder">
-				@foreach (var art in testc)
-				{
-					<div class="card-art">
-						<h5> <b> @art</b></h5>
-					</div>
 
-				}
-			</div>
 
 		</div>
+	}
+	else
+			{
+				Response.Redirect("Index");
+			}
 
 
 
