@@ -107,6 +107,11 @@
             border-top-left-radius: 4px;
             border-bottom-left-radius: 4px;
         }
+			.rec-btn:hover {
+				background: white;
+				border: 1px solid;
+				color: black;
+			}
 
         .search-btn:hover {
             background: white;
@@ -114,11 +119,7 @@
             color: black;
         }
 
-        .rec-btn:hover {
-            background: white;
-            border: 1px solid;
-            color: black;
-        }
+        
 
         .alert {
             background: #cdcaca;
@@ -186,9 +187,9 @@
     <div class="container">
         <div class="row no-gutters align-items-center justify-content-center ">
 
-            <div class="alert hide">
-                <span> <b>You can search for an Expert, Answer or an Article.</b></span>
-            </div>
+            @*<div class="alert hide">
+                <span> <b>You can search for an Answer or Expert</b></span>
+            </div>*@
 
             
             <div class="col-lg-7 px-5 pt-2">
@@ -248,7 +249,7 @@
         var id = setInterval(function () {
             secs++;// console.log(secs);
 
-            if (secs > 1 && secs < 3 && flag == "1") {
+            if (secs > 1 && secs < 3 ) {
                 $('.alert').removeClass("hide");
                 $('.alert').addClass("show");
             }

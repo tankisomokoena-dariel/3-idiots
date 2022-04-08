@@ -42,6 +42,26 @@
 			height: 100%;
 		}
 
+		.rec-btn {
+			border: none;
+			/*float: right;*/
+			outline: none;
+			height: 50px;
+			width: 10%;
+			background-color: gray;
+			/*color: white;*/
+			border-top-right-radius: 4px;
+			border-bottom-right-radius: 4px;
+			border-top-left-radius: 4px;
+			border-bottom-left-radius: 4px;
+		}
+
+			.rec-btn:hover {
+				background: white;
+				border: 1px solid;
+				color: black;
+			}
+
     </style>
 
     <title>Dariel iHub</title>
@@ -69,7 +89,7 @@
                 <li class="nav-item ">@Html.ActionLink("My Skills", "GetUserSkills", "Skills")</li>
             </ul>
             <div class="navigate hide">
-                <span> <b>listening</b></span>
+                <span> <b>Listening</b></span>
             </div>
 
             <button type="button" id="rec-control-id" class="rec-btn" onclick="recognize(false);">
