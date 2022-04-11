@@ -31,3 +31,4 @@ About the Python Model
 
 The python model utilised is a sentence processer that analyses strings to find strings that match. It matches searched questions with frequently asked questions that has been asked already. The model can also find user skills related to the searched question. It can process strings by tokenizing the question asked by a user and a questions that exist on the database, strips away stopwords and uses to Jaccard Similarity Index  calculate the similarity. . It's a measure of similarity for the two sets of data, with a range from 0% to 100%. The higher the percentage, the more similar the two strings.
 
+Run model locally using python script found on https://github.com/BL4CKDUDE/Plankton, otherwise access model on azure using https://planktonpython.azurewebsites.net/model/request and supply json containing "question": "<your-question-here>"
